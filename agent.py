@@ -291,7 +291,7 @@ def _get_initialized_routing_agent_sync():
     async def _async_main():
         routing_agent_instance = await RoutingAgent.create(
             remote_agent_addresses=[
-                os.getenv("CITY_OFFICE_AGENT_URL", "http://localhost:8080"),
+                os.getenv("CITY_OFFICE_AGENT_URL", "https://officer-side-agent-871861759609.us-east4.run.app"),
             ]
         )
         return routing_agent_instance.create_agent()
