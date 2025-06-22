@@ -291,8 +291,7 @@ def _get_initialized_routing_agent_sync():
     async def _async_main():
         routing_agent_instance = await RoutingAgent.create(
             remote_agent_addresses=[
-                os.getenv("CITY_OFFICE_AGENT_URL", "http://localhost:10001"),
-                os.getenv("DISASTER_MANAGEMENT_AGENT_URL", "http://localhost:10002"),
+                os.getenv("CITY_OFFICE_AGENT_URL", "http://localhost:8080"),
             ]
         )
         return routing_agent_instance.create_agent()
