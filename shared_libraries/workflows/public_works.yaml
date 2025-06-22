@@ -1,0 +1,79 @@
+# workflows/public_works.yaml
+intent_group: public_works
+category: Public Works & Infrastructure
+intents:
+
+  - intent: report_pothole
+    title: Report a Pothole
+    steps:
+      - id: get_location
+        type: input
+        prompt: "Please enter the location of the pothole (address or intersection)."
+        entity: location
+      - id: get_severity
+        type: select
+        prompt: "How severe is the pothole?"
+        options: [Minor, Moderate, Severe]
+        entity: severity
+      - id: upload_photo
+        type: upload
+        prompt: "Upload a photo if available."
+        entity: image
+      - id: submit_ticket
+        type: action
+        action: create_ticket
+        payload:
+          category: pothole
+          location: $location
+          severity: $severity
+          image: $image
+
+  - intent: streetlight_outage
+    title: Report Streetlight Outage
+    steps:
+      - id: get_pole_location
+        type: input
+        prompt: "Where is the streetlight located? (e.g., near address or intersection)"
+        entity: location
+      - id: get_pole_number
+        type: input
+        prompt: "If visible, please enter the pole number."
+        entity: pole_number
+      - id: outage_type
+        type: select
+        prompt: "What type of issue is occurring?"
+        options: [Light completely out, Flickering, On during day, Other]
+        entity: outage_type
+      - id: submit_ticket
+        type: action
+        action: create_ticket
+        payload:
+          category: streetlight_outage
+          location: $location
+          pole_number: $pole_number
+          outage_type: $outage_type
+
+  - intent: sidewalk_damage
+    title: Report Sidewalk Damage
+    steps:
+      - id: get_location
+        type: input
+        prompt: "Where is the damaged sidewalk?"
+        entity: location
+      - id: damage_type
+        type: select
+        prompt: "What type of damage is present?"
+        options: [Cracked, Uplifted, Sunken, Obstructed, Other]
+        entity: damage_type
+      - id: get_photo
+        type: upload
+        prompt: "Upload a photo if available."
+        entity: image
+      - id: submit_ticket
+        type: action
+        action: create_ticket
+        payload:
+          category: sidewalk
+          location: $location
+          damage_type: $damage_type
+          image: $image

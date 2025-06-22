@@ -1,0 +1,32 @@
+[
+    {
+      "file": "public_works.yaml",
+      "intent_group": "public_works",
+      "category": "Public Works & Infrastructure",
+      "description": "Handle reports related to potholes, streetlights, and sidewalks."
+    },
+    {
+      "file": "sanitation_utilities.yaml",
+      "intent_group": "sanitation_utilities",
+      "category": "Sanitation & Code Enforcement, Utilities & Service Connections",
+      "description": "Includes missed trash pickup, water leak reports, and utility connections."
+    },
+    {
+      "file": "permits_transport_safety.yaml",
+      "intent_group": "permits_transport_safety",
+      "category": "Permits & Licensing, Parking & Transportation, Safety & Emergency Services",
+      "description": "Covers business licenses, illegal parking, and emergency requests."
+    },
+    {
+      "file": "parks_community_elections.yaml",
+      "intent_group": "parks_community_elections",
+      "category": "Parks, Recreation & Culture, Community & Social Services, Elections & Civic Engagement",
+      "description": "Handles park maintenance, community service info, and voter registration help."
+    },
+    {
+      "file": "general_feedback.yaml",
+      "intent_group": "general_info_feedback",
+      "category": "General Information & Feedback",
+      "description": "Provides general information and collects user feedback."
+    }
+]

@@ -1,0 +1,41 @@
+# workflows/general_feedback.yaml
+intent_group: general_info_feedback
+category: General Information & Feedback
+intents:
+
+  - intent: ask_city_info
+    title: Ask General City Information
+    steps:
+      - id: get_question
+        type: input
+        prompt: "What would you like to know about the city? (e.g., holidays, contact numbers, service hours)"
+        entity: question
+      - id: answer_lookup
+        type: action
+        action: lookup_answer
+        payload:
+          question: $question
+
+  - intent: submit_feedback
+    title: Submit General Feedback
+    steps:
+      - id: get_feedback_topic
+        type: input
+        prompt: "What area is your feedback about? (e.g., parks, public safety, website usability)"
+        entity: topic
+      - id: get_feedback_content
+        type: input
+        prompt: "Enter your feedback."
+        entity: content
+      - id: get_contact_optional
+        type: input
+        prompt: "Optionally provide your name/email if you'd like a response."
+        entity: contact
+      - id: submit_feedback_ticket
+        type: action
+        action: create_ticket
+        payload:
+          category: general_feedback
+          topic: $topic
+          content: $content
+          contact: $contact

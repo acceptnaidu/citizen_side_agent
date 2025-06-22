@@ -1,0 +1,72 @@
+# workflows/parks_community_elections.yaml
+intent_group: parks_community_elections
+category: Parks, Community & Elections
+intents:
+
+  - intent: report_park_maintenance
+    title: Report Park Maintenance Issue
+    steps:
+      - id: get_park_name
+        type: input
+        prompt: "Which park has the issue?"
+        entity: park_name
+      - id: describe_issue
+        type: input
+        prompt: "Describe the issue (e.g., broken bench, overflowing trash)."
+        entity: description
+      - id: upload_photo
+        type: upload
+        prompt: "Upload a photo if available."
+        entity: image
+      - id: submit_park_ticket
+        type: action
+        action: create_ticket
+        payload:
+          category: park_maintenance
+          park_name: $park_name
+          description: $description
+          image: $image
+
+  - intent: request_community_service_info
+    title: Request Info on Community Services
+    steps:
+      - id: get_service_interest
+        type: input
+        prompt: "Which community service are you interested in? (e.g., food banks, senior care)"
+        entity: service_type
+      - id: get_contact_info
+        type: input
+        prompt: "Please provide your name and contact details."
+        entity: contact_info
+      - id: submit_request
+        type: action
+        action: create_ticket
+        payload:
+          category: community_service_info
+          service_type: $service_type
+          contact_info: $contact_info
+
+  - intent: voter_registration_help
+    title: Get Help with Voter Registration
+    steps:
+      - id: get_issue_type
+        type: select
+        prompt: "What do you need help with?"
+        options: [Registering to vote, Updating info, Checking registration status, Other]
+        entity: help_type
+      - id: get_residence
+        type: input
+        prompt: "Enter your residential address."
+        entity: address
+      - id: get_contact_info
+        type: input
+        prompt: "Provide your name and contact details."
+        entity: contact_info
+      - id: submit_registration_ticket
+        type: action
+        action: create_ticket
+        payload:
+          category: voter_registration
+          help_type: $help_type
+          address: $address
+          contact_info: $contact_info

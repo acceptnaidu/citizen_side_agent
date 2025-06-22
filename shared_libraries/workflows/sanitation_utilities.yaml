@@ -1,0 +1,83 @@
+# workflows/sanitation_utilities.yaml
+intent_group: sanitation_utilities
+category: Sanitation & Utilities
+intents:
+
+  - intent: missed_trash_pickup
+    title: Report Missed Trash Pickup
+    steps:
+      - id: get_address
+        type: input
+        prompt: "Please provide your address where trash was not collected."
+        entity: address
+      - id: get_collection_day
+        type: input
+        prompt: "What was the scheduled collection day?"
+        entity: collection_day
+      - id: get_bin_type
+        type: select
+        prompt: "What type of bin was missed?"
+        options: [Garbage, Recycling, Yard Waste]
+        entity: bin_type
+      - id: submit_ticket
+        type: action
+        action: create_ticket
+        payload:
+          category: trash_pickup
+          address: $address
+          collection_day: $collection_day
+          bin_type: $bin_type
+
+  - intent: water_leak_report
+    title: Report Water Leak
+    steps:
+      - id: get_leak_location
+        type: input
+        prompt: "Where is the leak located? (address or intersection)"
+        entity: location
+      - id: leak_type
+        type: select
+        prompt: "What type of leak is it?"
+        options: [Public line, Residential line, Meter leak]
+        entity: leak_type
+      - id: urgency_level
+        type: select
+        prompt: "Is the leak minor, moderate, or urgent?"
+        options: [Minor, Moderate, Urgent]
+        entity: urgency
+      - id: submit_leak_ticket
+        type: action
+        action: create_ticket
+        payload:
+          category: water_leak
+          location: $location
+          leak_type: $leak_type
+          urgency: $urgency
+
+  - intent: utility_connection_request
+    title: Request Utility Connection
+    steps:
+      - id: get_service_type
+        type: select
+        prompt: "What type of service are you requesting?"
+        options: [Water, Sewer, Electricity, Gas]
+        entity: service_type
+      - id: get_address
+        type: input
+        prompt: "Enter the service address."
+        entity: address
+      - id: get_customer_info
+        type: input
+        prompt: "Provide your full name and contact info."
+        entity: customer_info
+      - id: confirm_submission
+        type: confirm
+        prompt: "Confirm to submit this utility service request."
+      - id: submit_connection_request
+        type: action
+        action: create_ticket
+        payload:
+          category: utility_connection
+          service_type: $service_type
+          address: $address
+          customer_info: $customer_info
