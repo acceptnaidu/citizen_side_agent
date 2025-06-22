@@ -10,7 +10,10 @@ from google.genai import types
 from pprint import pformat
 import asyncio
 import traceback
-import time  
+import time
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 APP_NAME = "routing_app"
