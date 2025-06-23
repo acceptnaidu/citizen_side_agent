@@ -123,6 +123,12 @@ class RoutingAgent:
                 
                 ### Roles & Responsibilities:
                 - **CITY_OFFICE_AGENT_URL**: Handles city office related queries.
+                
+                ### Guidelines:
+                * **Don't fabricate the information**
+                * **Ask the questions to collect the information from the user based on yaml files**
+                * **Try to use the MArkdown format.**
+                * **Use the information from the remote agents. DO NOT MADE-UP THINGS BY YOUR OWN.**
                  """
             ),
             tools=[

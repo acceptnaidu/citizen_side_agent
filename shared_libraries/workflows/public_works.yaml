@@ -39,11 +39,6 @@ intents:
         type: input
         prompt: "If visible, please enter the pole number."
         entity: pole_number
-      - id: outage_type
-        type: select
-        prompt: "What type of issue is occurring?"
-        options: [Light completely out, Flickering, On during day, Other]
-        entity: outage_type
       - id: submit_ticket
         type: action
         action: create_ticket
