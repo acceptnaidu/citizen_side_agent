@@ -96,15 +96,6 @@ async def main():
     print("ADK session created successfully.")
 
     with gr.Blocks(theme=gr.themes.Ocean(), title="City Protol") as demo:
-        # gr.Image(
-        #     width=100,
-        #     height=100,
-        #     scale=0,
-        #     show_label=False,
-        #     show_download_button=False,
-        #     container=False,
-        #     show_fullscreen_button=False,
-        # )
 
         gr.ChatInterface(
             get_response_from_agent,

@@ -1,4 +1,8 @@
-import json, uuid, httpx, asyncio, os
+import json
+import uuid
+import httpx
+import asyncio
+import os
 from typing import List, Any
 from google.adk import Agent
 from google.adk.agents.readonly_context import ReadonlyContext
@@ -119,8 +123,7 @@ class RoutingAgent:
                 
                 ### Roles & Responsibilities:
                 - **CITY_OFFICE_AGENT_URL**: Handles city office related queries.
-                - **DISASTER_MANAGEMENT_AGENT_URL**: Manages disaster-related issues in the city.
-                        """
+                 """
             ),
             tools=[
                 self.send_message,
@@ -128,14 +131,6 @@ class RoutingAgent:
             ],
             
         )
-        # def disaster_alert_handler(input: dict) -> dict:
-        #     print("📥 Disaster Alert Received:", input)
-        #     # Do something useful (e.g., log, store, notify UI)
-        #     return {"acknowledged": True}
-
-        # # 🔧 Register the tool by name
-        # agent.tools.append("disaster_alert_handler", disaster_alert_handler)
-        # return agent
 
     def root_instruction(self, context: ReadonlyContext) -> str:
         current_agent = self.check_active_agent(context)
